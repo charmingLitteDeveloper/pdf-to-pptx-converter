@@ -2,10 +2,10 @@ package com.whipp.client;
 
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageTree;
@@ -42,8 +42,9 @@ public class Main {
 					        
 					        
 					        if (sourceFile.exists()) {
-					            System.out.println("Images copied to Folder: "+ destinationFile.getName());             
-					            PDDocument document = PDDocument.load(file);
+					            System.out.println("Images copied to Folder: "+ destinationFile.getName());
+								// PDDocument document = PDDocument.load(file);
+					            PDDocument document = Loader.loadPDF(file);
 					            PDPageTree list = document.getPages();
 					            System.out.println("Total files to be converted -> "+ list.getCount());
 
